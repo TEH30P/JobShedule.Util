@@ -13,7 +13,7 @@ function ~FSName~Bin~NParse
 #--------------------------------#
 function ~FSName~Bin~Convert
 (	[Parameter(Mandatory=1)][Byte[]]$iValue)
-{	return m~DHex~ToString (New-Object Bigint($iValue))}
+{	return m~DHex~ToString (New-Object Bigint(,$iValue))}
 #--------------------------------#
 function ~FSName~Bin~NConvert
 (	[Byte[]]$iValue, [Int32]$iLen, [switch]$fNullHigh)
@@ -24,5 +24,5 @@ function ~FSName~Bin~NConvert
 		{	return New-Object String([Char]'_', $iLen)}
 	}
 	else 
-    {	return (m~DHex~ToString (New-Object Bigint($iValue))).PadLeft($iLen, [char]'0')}
+    {	return (m~DHex~ToString (New-Object Bigint(,$iValue))).PadLeft($iLen, [char]'0')}
 }

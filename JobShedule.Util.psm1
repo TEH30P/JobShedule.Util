@@ -100,4 +100,4 @@ Remove-Variable 'm~LogPathRoot' -Scope Script;
 [Text.StringBuilder]${Script:m~SBMain} = New-Object Text.StringBuilder(64kb, 64kb);
 [String]${Script:m~Log~FSNameInstId} = m~DHex~ToString ([BigInt]$Host.InstanceId.ToByteArray());
 
-Export-ModuleMember -Function '~SJob~*', '~FSName~*', '~SJLog~*', '~TimeFreq~*' -Cmdlet '~SJob~*', '~FSName~*', '~SJLog~*', '~TimeFreq~*' -Alias '*-SJob*' -Variable '~SJob~*';
+Export-ModuleMember -Function '~SJob~*', '~FSName~*', '~SJLog~*', '~SJConf~*', '~TimeFreq~*' -Cmdlet '~SJob~*', '~FSName~*', '~SJLog~*', '~SJConf~*', '~TimeFreq~*' -Alias '*-SJob*' -Variable '~SJob~*';

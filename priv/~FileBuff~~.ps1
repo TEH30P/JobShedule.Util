@@ -16,7 +16,8 @@ function m~FileBuff~SB~Save~i
 	[Int32]$LenTot = 0;
 
 	while ($PosTot -ge 0)
-	{	if ($SBMain.Length - $PosTot -lt $ChBuff.Count)
+	{	
+		if ($SBMain.Length - $PosTot -lt $ChBuff.Count)
 		{	
 			$LenTot = $SBMain.Length - $PosTot;
 			$SBMain.CopyTo($PosTot, $ChBuff, 0, $LenTot);
@@ -32,13 +33,16 @@ function m~FileBuff~SB~Save~i
 		[Int32]$Len = $LenTot;
 
 		while ([Text.Encoding]::UTF8.GetByteCount($ChBuff, 0, $Len) -gt $Buff.Count)
-		{	$Len = $Len -shr 1}
+		{	
+			$Len = $Len -shr 1
+		}
 
 		[Int32]$Pos = 0;
 		[Int32]$LenB = 0;
 
 		while ($Pos -ge 0)
-		{	if ($Pos + $Len -lt $LenTot)
+		{	
+			if ($Pos + $Len -lt $LenTot)
 			{	
 				$LenB = [Text.Encoding]::UTF8.GetBytes($ChBuff, $Pos, $Len, $Buff, 0)
 				$Pos += $Len;
@@ -54,7 +58,9 @@ function m~FileBuff~SB~Save~i
 	}
 
 	if ($iFSBClear)
-	{	[Void]$SBMain.Clear()}
+	{	
+		[Void]$SBMain.Clear()
+	}
 
 	return $SBMain.Length;
 }
@@ -82,6 +88,7 @@ catch
 }
 #--------------------------------#
 function m~FileBuff~File~Close~i
-{	${m~FileBuff~StrWr}.Close();
+{	
+	${m~FileBuff~StrWr}.Close();
 	${m~FileBuff~StrWr} = $null;
 }

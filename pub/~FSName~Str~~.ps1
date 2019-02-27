@@ -1,4 +1,7 @@
-# Various string <-> FileSystem name
+New-Alias -Name ConvertFrom-FSName -Value '~FSName~Str~Parse';
+New-Alias -Name ConvertTo-FSName   -Value '~FSName~Str~Convert';
+
+# Various text string <-> FileSystem name (uri encode/decode)
 
 [String]${m~FSName~Str~Esc} = '?*\/:|><%'
 #--------------------------------#

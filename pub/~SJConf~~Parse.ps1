@@ -1,3 +1,6 @@
+New-Alias -Name ConvertFrom-SJConfScalar -Value '~SJConf~Scalar~Parse';
+New-Alias -Name ConvertFrom-SJConfList   -Value '~SJConf~List~Parse';
+
 #--------------------------------#
 # Parse single configuration scalar value.
 function ~SJConf~Scalar~Parse
@@ -38,7 +41,7 @@ catch
     throw
 }}
 #--------------------------------#
-# Parse single configuration list value.
+# Parse single configuration value as list.
 function ~SJConf~List~Parse
 {	param
 	(   [parameter(Mandatory=1, Position=0)][Collections.IDictionary]$ioConf

@@ -1,4 +1,7 @@
-function ~SJLog~Dir~Set 
+New-Alias -Name Set-SJLogDir -Value '~SJLog~Dir~Set';
+
+# Setting the folder path for log files.
+function ~SJLog~Dir~Set
 {   param 
     (   [parameter(Mandatory=1)]
             [String]$iPath

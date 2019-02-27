@@ -1,3 +1,8 @@
+New-Alias -Name ConvertFrom-FSNameBin  -Value '~FSName~Bin~Parse';
+New-Alias -Name ConvertFrom-FSNameBinN -Value '~FSName~Bin~NParse';
+New-Alias -Name ConvertTo-FSNameBin    -Value '~FSName~Bin~Convert';
+New-Alias -Name ConvertTo-FSNameBinN   -Value '~FSName~Bin~NConvert';
+
 # Binary string <-> FileSystem name.
 
 #--------------------------------#

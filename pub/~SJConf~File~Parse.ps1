@@ -1,4 +1,7 @@
-# Load and parse xml or json config file.
+New-Alias -Name Import-SJConfFile -Value '~SJConf~File~Parse';
+
+# Load and parse xml or json config file. If file is locked it will retry to read it for `-iTimeOut` period of time (default 30s).
+
 function ~SJConf~File~Parse
 {	param
 	(	[parameter(Mandatory=1, Position=0)]

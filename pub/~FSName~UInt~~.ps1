@@ -1,3 +1,9 @@
+New-Alias -Name ConvertFrom-FSNameUInt  -Value '~FSName~UInt~Parse';
+New-Alias -Name ConvertFrom-FSNameUIntN -Value '~FSName~UInt~NParse';
+New-Alias -Name ConvertTo-FSNameUInt    -Value '~FSName~UInt~Convert';
+New-Alias -Name ConvertTo-FSNameUIntN   -Value '~FSName~UInt~NConvert';
+
+
 # UInt64 | UInt32 | UInt16 | Byte <-> FileSystem name.
 
 #--------------------------------#

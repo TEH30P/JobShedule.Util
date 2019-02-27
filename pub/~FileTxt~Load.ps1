@@ -1,4 +1,6 @@
-# Read content of txt file.
+New-Alias -Name Import-SJConfFile -Value '~SJob~FileTxt~Load';
+
+# Read content of txt file. If file is locked it will retry to read it for `-iTimeOut` period of time (default 30s).
 function  ~SJob~FileTxt~Load
 (	[parameter(Mandatory=1, Position=0)]
 	[ValidateScript({Test-Path ($_)})]

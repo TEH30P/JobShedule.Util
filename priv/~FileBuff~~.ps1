@@ -47,7 +47,7 @@ function m~FileBuff~SB~Save~i
 				$LenB = [Text.Encoding]::UTF8.GetBytes($ChBuff, $Pos, $Len, $Buff, 0)
 				$Pos += $Len;
 			}
-			else 
+			else
 			{	
 				$LenB = [Text.Encoding]::UTF8.GetBytes($ChBuff, $Pos, $LenTot - $Pos, $Buff, 0)
 				$Pos = -1;

@@ -1,3 +1,8 @@
+New-Alias -Name ConvertFrom-FSNameDTm  -Value '~FSName~DT~Parse';
+New-Alias -Name ConvertFrom-FSNameDTmN -Value '~FSName~DT~NParse';
+New-Alias -Name ConvertTo-FSNameDTm    -Value '~FSName~DT~Convert';
+New-Alias -Name ConvertTo-FSNameDTmN   -Value '~FSName~DT~NConvert';
+
 # DateTime <-> FileSystem name.
 
 #--------------------------------#

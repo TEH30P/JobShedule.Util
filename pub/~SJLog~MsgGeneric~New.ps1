@@ -1,5 +1,7 @@
+New-Alias -Name New-SJLogGenericMsg -Value '~SJLog~MsgTyped~New';
+
 # New log message. Will create message file, if it not exist.
-function ~SJLog~MsgTyped~New
+function ~SJLog~MsgGeneric~New
 {	param
 	(	[parameter(Mandatory=0, Position=0)]
 			[NPSShJob.EMsgSevernity]$iLogSeverity = 'Inf'

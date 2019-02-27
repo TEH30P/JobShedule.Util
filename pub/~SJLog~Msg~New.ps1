@@ -1,3 +1,5 @@
+New-Alias -Name New-SJLogMsg -Value '~SJLog~Msg~New';
+
 # New log message. Will create message file, if it not exist.
 function ~SJLog~Msg~New
 {	param

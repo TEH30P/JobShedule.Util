@@ -1,4 +1,4 @@
-New-Alias -Name Import-SJConfFile -Value '~SJConf~File~Parse';
+New-Alias -Name Import-SJConfFile -Value '~SJConf~File~Parse' -Force;
 
 # Load and parse xml or json config file. If file is locked it will retry to read it for `-iTimeOut` period of time (default 30s).
 
@@ -60,7 +60,15 @@ try
 		$MainQue.Enqueue($Ret.ValueTree);
 		$MainQue.Enqueue($RawRoot.$KeyRoot)
 
-		m~ConfValueTree~Create $MainQue;
+		if ($RawRoot -is [hashtable])
+		{	
+			m~ConfValueTreeHT~Create $MainQue
+		}
+		else
+		{	
+			m~ConfValueTree~Create $MainQue
+		}
+
 		$Ret.FilePath = $FSPath;
 		$Ret; #<---
 		

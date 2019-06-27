@@ -1,4 +1,4 @@
-New-Alias -Name Import-SJConfFile -Value '~SJob~FileTxt~Load';
+New-Alias -Name Get-SJobFileTxtContent -Value '~SJob~FileTxt~Load' -Force;
 
 # Read content of txt file. If file is locked it will retry to read it for `-iTimeOut` period of time (default 30s).
 function  ~SJob~FileTxt~Load

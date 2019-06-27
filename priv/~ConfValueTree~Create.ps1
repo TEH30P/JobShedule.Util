@@ -91,24 +91,24 @@ function m~ConfValueTree~Create
 
 					foreach ($RawSubVal in $RawValArr)
 					{	
+						[Collections.IDictionary]$SubVal = [NPSShJob.CConfData]::ValueTreeFactory();
+						
 						if ($RawSubVal | Get-Member -MemberType Properties -Name 'S?-*')
 						{
-							[Void]$SubValArr.Add(([Collections.IDictionary]$SubVal = [NPSShJob.CConfData]::ValueTreeFactory()));
+							[Void]$SubValArr.Add($SubVal);
 							$SubVal['Is'] = [String]::Empty;
 							$Que.Enqueue($SubVal);
 							$Que.Enqueue($RawSubVal);
 						}
 						elseif ($RawSubVal | Get-Member -MemberType Properties -Name 'V-Is')
 						{
-							[Collections.IDictionary]$SubVal = [NPSShJob.CConfData]::ValueTreeFactory();
 							$SubVal['Is'] = [String]$RawSubVal.'V-Is';
 							[Void]$SubValArr.Add($SubVal)
 						}
 						elseif (-not [String]::IsNullOrEmpty($RawSubVal))
 						{
-							[Collections.IDictionary]$SubVal = [NPSShJob.CConfData]::ValueTreeFactory();
 							$SubVal['Is'] = [String]$RawSubVal;
-							[Void]$SubValArr.Add($SubVal)
+							[Void]$SubValArr.Add($SubVal);
 						}
 					}
 

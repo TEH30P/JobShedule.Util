@@ -29,14 +29,12 @@ function m~ConfFile~Load
 					[PSCustomObject]$RawRoot = [IO.File]::ReadAllText($FSPath, [Text.Encoding]::UTF8) | ConvertFrom-Json;
 					[String]$Mode = 'json';
 				}
-				<#!!!REM: not supportd yet
 				'.psd1'
-				{	[PSCustomObject]$RawRoot = [PSCustomObject]::new();
-					Import-LocalizedData -BindingVariable RawRoot -BaseDirectory ([IO.Path]::GetDirectoryName($FSPath)) -FileName ([IO.Path]::GetFileName($FSPath));
-					[PSCustomObject]$RawRoot = [PSCustomObject]$RawRoot[$iKeyRoot];
+				{	[hashtable]$RawRoot = [scriptblock]::Create("DATA { $([IO.File]::ReadAllText($FSPath, [Text.Encoding]::UTF8)) }").Invoke();
+					#!!!REM: Using scriptblock is more suitable for this operation. 
+					#Import-LocalizedData -BindingVariable RawRoot -BaseDirectory ([IO.Path]::GetDirectoryName($FSPath)) -FileName ([IO.Path]::GetFileName($FSPath));
 					[String]$Mode = 'psd';
 				}
-				#>
 				default
 				{	
 					throw [Exception]::new('Confg file extension not supported.')

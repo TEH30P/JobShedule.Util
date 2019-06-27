@@ -20,7 +20,8 @@ function m~YAML~Value~Save
 	[Void]$ioSBMain.AppendLine().Append([Char]' ', $Indent).Append($iPrefix);
 	
 	if ($iValue.Length -eq 0)
-	{	m~FileBuff~SB~Save~i $ioSBMain 0 $iFSBClear | Out-Null;
+	{	
+		m~FileBuff~SB~Save~i $ioSBMain 0 $iFSBClear | Out-Null;
 	}
 	elseif ($iValue.IndexOfAny(${m~YAML~ChNonPlainArr}) -lt 0)
 	{	# Simple singleline value will write in plain style.

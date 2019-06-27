@@ -1,4 +1,4 @@
-New-Alias -Name New-SJLogGenericMsg -Value '~SJLog~MsgTyped~New';
+New-Alias -Name New-SJLogGenericMsg -Value '~SJLog~MsgTyped~New' -Force;
 
 # New log message. Will create message file, if it not exist.
 function ~SJLog~MsgGeneric~New

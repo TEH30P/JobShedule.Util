@@ -1,5 +1,5 @@
-New-Alias -Name ConvertFrom-SJConfScalar -Value '~SJConf~Scalar~Parse';
-New-Alias -Name ConvertFrom-SJConfList   -Value '~SJConf~List~Parse';
+New-Alias -Name Update-SJConfScalar -Value '~SJConf~Scalar~Parse' -Force;
+New-Alias -Name Update-SJConfList   -Value '~SJConf~List~Parse' -Force;
 
 #--------------------------------#
 # Parse single configuration scalar value.
@@ -13,9 +13,20 @@ function ~SJConf~Scalar~Parse
 	);
 try 
 {   
-    $Ret = $null;
+    if ($iName.StartsWith('SV-'))
+	{
+		[String]$Name =  $iName.Remove(2, 1)
+	}
+	elseif ($iName.StartsWith('SV'))
+	{
+		[String]$Name = $iName
+	}
+	else
+	{
+		[String]$Name = 'SV' + $iName
+	}
 
-    if (-not ([Collections.IDictionary]$ioConf).Contains($iName))
+    if (-not ([Collections.IDictionary]$ioConf).Contains($Name))
     {   
         if ($fNullable)
         {
@@ -29,11 +40,11 @@ try
         
     if ($fOut)
     {   
-        return m~ConfValue~Parse $ioConf[$iName] $iType
+        return m~ConfValue~Parse $ioConf[$Name] $iType
     }
     else
     {
-        $ioConf[$iName]['Is'] = m~ConfValue~Parse $ioConf[$iName] $iType
+        $ioConf[$Name]['Is'] = m~ConfValue~Parse $ioConf[$Name] $iType
     }
 }
 catch
@@ -51,10 +62,21 @@ function ~SJConf~List~Parse
     ,	[parameter(Mandatory=0            )][switch]$fOut
 	);
 try 
-{   
-    $Ret = $null;
-
-    if (-not ([Collections.IDictionary]$ioConf).Contains($iName))
+{
+    if ($iName.StartsWith('SL-'))
+	{
+		[String]$Name =  $iName.Remove(2, 1)
+	}
+	elseif ($iName.StartsWith('SL'))
+	{
+		[String]$Name = $iName
+	}
+	else
+	{
+		[String]$Name = 'SL' + $iName
+	}
+    
+    if (-not ([Collections.IDictionary]$ioConf).Contains($Name))
     {   
         if ($fNullable)
         {
@@ -68,14 +90,14 @@ try
     
     if ($fOut)
     {
-        foreach ($ConfIt in $ioConf[$iName])
+        foreach ($ConfIt in $ioConf[$Name])
         {
             m~ConfValue~Parse $ConfIt $iType
         }
     }
     else
     {  
-        [Collections.IDictionary[]]$Arr = $ioConf[$iName];
+        [Collections.IDictionary[]]$Arr = $ioConf[$Name];
 
         for ([Int32]$k = 0; $k -lt $Arr.Count; $k++)
         {   

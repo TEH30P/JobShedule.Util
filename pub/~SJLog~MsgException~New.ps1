@@ -1,4 +1,4 @@
-New-Alias -Name New-SJLogExceptionMsg -Value '~SJLog~MsgException~New';
+New-Alias -Name New-SJLogExceptionMsg -Value '~SJLog~MsgException~New' -Force;
 
 # <try..catch> block handler. New log message with exception. Will create message file, if it not exist.
 function ~SJLog~MsgException~New

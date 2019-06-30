@@ -1,4 +1,4 @@
-New-Alias -Name Set-SJLogDir -Value '~SJLog~Dir~Set';
+New-Alias -Name Set-SJLogDir -Value '~SJLog~Dir~Set' -Force;
 
 # Setting the folder path for log files.
 function ~SJLog~Dir~Set

@@ -1,5 +1,5 @@
-New-Alias -Name Merge-SJConfScalar -Value '~SJConf~Scalar~Inherit';
-New-Alias -Name Merge-SJConfList   -Value '~SJConf~List~Inherit';
+New-Alias -Name Merge-SJConfScalar -Value '~SJConf~Scalar~Inherit' -Force;
+New-Alias -Name Merge-SJConfList   -Value '~SJConf~List~Inherit' -Force;
 
 # Scalar data is overwited in derrived conf.
 function ~SJConf~Scalar~Inherit

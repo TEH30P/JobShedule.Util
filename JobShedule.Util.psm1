@@ -26,18 +26,12 @@ function m~PSModule~Init([String]$iLogPathRoot)
 		throw New-Object IO.FileNotFoundException("The directory '$iLogPathRoot' is not found.")
 	}
 	
-	if ($iLogPathRoot.EndsWith('\'))
-	{
-		${Script:m~LogPathRoot} = $iLogPathRoot.Remove($iLogPathRoot.Length - 1)
-	}
-	else
-	{	
-		${Script:m~LogPathRoot} = $iLogPathRoot
-	}
+	${Script:m~LogPathRoot} = $iLogPathRoot.TrimEnd('\');
 }
 catch 
 {	
-	Write-Warning "The error occured during processing module arguments. '~SJLog~*' functions (except '~SJLog~Dir~Set') will throw error until you call '~SJLog~Dir~Set' with flag 'fRoot' and proper 'iPath' parameter value.`r`n$_"
+	${Script:m~LogPathRoot} = [IO.Path]::GetTempPath().TrimEnd('\');
+	Write-Warning "The error occured during processing module arguments. '~SJLog~*' functions will write log files in %temp% folder until you call '~SJLog~Dir~Set' with flag 'fRoot' and proper 'iPath' parameter value.`r`n$_"
 }
 }
 #--------------------------------#

@@ -14,10 +14,12 @@ namespace NPSShJob
 	{	
 		public System.String DirRootPath;
 		public System.String DirPath;
+		public System.DateTime LogDate;
 
-		public CLogOpt(System.String iDirRootPath, System.String iDirPath)
+		public CLogOpt(System.String iDirRootPath, System.String iDirPath, System.DateTime iLogDate)
 		{	DirRootPath = iDirRootPath;
 			DirPath = iDirPath;
+			LogDate = iLogDate;
 		}
 	}
 }

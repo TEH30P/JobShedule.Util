@@ -24,4 +24,7 @@ Comadlet and function list:
 - `ConvertFrom-SJConfScalar` (`~SJConf~Scalar~Parse`) : Parse single configuration scalar value.
 - `ConvertFrom-SJConfList` (`~SJConf~List~Parse`) : Parse single configuration value as list.
 - `New-SJLogMsg` (`~SJLog~Msg~New`) : New log message. Will create message file, if it not exist.
+- `New-SJLogCloseMsg` (`~SJLog~MsgClose~New`) : New log close-mark message. Will create message file, if it not exist.
 - `New-SJLogExceptionMsg` (`~SJLog~MsgException~New`) : \<try..catch\> block handler. New log message with exception. Will create message file, if it not exist.
+- `Set-SJLogDir` (`~SJLog~Dir~Set`) : Setting the folder path for log files.
+- `Set-SJLogDir` (`~SJLog~Date~Set`) : Setting the "date-time" part of each log file name.

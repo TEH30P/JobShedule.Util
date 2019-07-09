@@ -88,10 +88,10 @@ foreach ($FileName in [IO.Directory]::GetFiles($FileName))
 	}
 }
 
-New-Variable -Name '~SJLog~PathRoot' -Value (New-Object NPSShJob.CLogOpt(${Script:m~LogPathRoot}, '')) -Option ReadOnly -Scope Global -Force;
+New-Variable -Name '~SJLog~Opt' -Value (New-Object NPSShJob.CLogOpt(${Script:m~LogPathRoot}, '', [DateTime]::Now)) -Option ReadOnly -Scope Global -Force;
 Remove-Variable 'm~LogPathRoot' -Scope Script;
 
 [Text.StringBuilder]${Script:m~SBMain} = New-Object Text.StringBuilder(64kb, 64kb);
 [String]${Script:m~Log~FSNameInstId} = m~DHex~ToString ([BigInt]$Host.InstanceId.ToByteArray());
 
-Export-ModuleMember -Function '~SJob~*', '~FSName~*', '~SJLog~*', '~SJConf~*', '~TimeFreq~*' -Cmdlet '~SJob~*', '~FSName~*', '~SJLog~*', '~SJConf~*', '~TimeFreq~*' -Alias '*-SJob*', '*-FSName*', '*-SJConf*', '*-SJLog*' -Variable '~SJob~*';
+Export-ModuleMember -Function '~SJob~*', '~FSName~*', '~SJLog~*', '~SJConf~*', '~TimeFreq~*' -Cmdlet '~SJob~*', '~FSName~*', '~SJLog~*', '~SJConf~*', '~TimeFreq~*' -Alias '*-SJob*', '*-FSName*', '*-SJConf*', '*-SJLog*' -Variable '~SJob~*', '~SJLog~Opt';

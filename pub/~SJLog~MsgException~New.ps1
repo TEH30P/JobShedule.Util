@@ -5,8 +5,8 @@ function ~SJLog~MsgException~New
 {	param
 	(	[parameter(Mandatory=0, Position=0)]
 			[NPSShJob.EMsgSevernity]$iLogSeverity = 'Err'
-	,	[parameter(Mandatory=1, Position=1)]
-			[DateTime]$iLogAt
+	,	[parameter(Mandatory=0, Position=1)]
+			[DateTime]$iLogAt = ${~SJLog~Opt}.LogDate #!!!STUB: Deprecated parameter. Will be removed in future.
 	,	[parameter(Mandatory=1, Position=2)]
 			$iPSErrorInfo
 	,	[parameter(Mandatory=0)]
@@ -18,7 +18,7 @@ function ~SJLog~MsgException~New
 	)
 try
 {
-	m~FileBuff~File~Open~i (m~FSName~LogPath~Gen~i ${m~SBMain}.Clear() $iLogSeverity $iLogAt $iLogSrc);
+	m~FileBuff~File~Open~i (m~FSName~LogPath~Gen~i ${m~SBMain}.Clear() $iLogSeverity $iLogSrc);
 	[Void]${m~SBMain}.Clear();
 
 	m~YAML~Value~Save ${m~SBMain} ('{0:O}:' -f $iAt) '' 0 -iFSBClear $true;

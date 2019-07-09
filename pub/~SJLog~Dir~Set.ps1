@@ -12,11 +12,11 @@ try
 {
 	if ($fRoot)
 	{
-		[String]$DirPath = [IO.Path]::Combine($iPath, ${Global:~SJLog~PathRoot}.DirPath)
+		[String]$DirPath = [IO.Path]::Combine($iPath, ${Global:~SJLog~Opt}.DirPath)
 	}
 	else
 	{
-		[String]$DirPath = [IO.Path]::Combine(${Global:~SJLog~PathRoot}.DirRootPath, $iPath)
+		[String]$DirPath = [IO.Path]::Combine(${Global:~SJLog~Opt}.DirRootPath, $iPath)
 	}
 
 	if (-not [IO.Directory]::Exists($DirPath))
@@ -33,11 +33,11 @@ try
 
 	if ($fRoot)
 	{
-		${Global:~SJLog~PathRoot}.DirRootPath = $DirPath;
+		${Global:~SJLog~Opt}.DirRootPath = $DirPath;
 	}
 	else
 	{
-		${Global:~SJLog~PathRoot}.DirPath = $DirPath;
+		${Global:~SJLog~Opt}.DirPath = $DirPath;
 	}
 }
 catch
